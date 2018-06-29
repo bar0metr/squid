@@ -1,0 +1,11 @@
+--- src/HttpMsg.h	2018-06-11 21:30:57.000000000 +0500
++++ src/HttpMsg.h	2018-06-29 21:21:31.217642793 +0500
+@@ -128,7 +128,7 @@
+ };
+ 
+ #define HTTPMSGUNLOCK(a) if (a) { if ((a)->unlock() == 0) delete (a); (a)=NULL; }
+-#define HTTPMSGLOCK(a) (a)->lock()
++#define HTTPMSGLOCK(a) if (a) { (a)->lock(); }
+ 
+ #endif /* SQUID_HTTPMSG_H */
+ 
